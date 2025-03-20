@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery Mobile Web App</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="CourseThemeMobile.min.css" />
+<link rel="stylesheet" href="jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+<script>
+       function saveFormData() {
+        let userData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            favThing: document.getElementById("favThing").value,
+            age: document.getElementById("age").value,
+            gender: document.querySelector('input[name="gender"]:checked')?.value,
+            comments: document.getElementById("comments").value
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
+        alert("Data Saved!");
+        }
+</script>
+</head>
+<body>
+
+<div id="page" data-role="page" data-theme="a" data-add-back-btn="true">
+	<div data-role="header" style="display: flex; justify-content: center; align-items: center; padding: 10px;" data-theme="a" >
+		<img src="images/logo.png" alt="MFT Logo" style="max-width: 55px; height: auto; margin-right: 10px;">
+		<h1 style="margin: 0; font-size: 20px;">My Favorite Things</h1>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview" data-theme="c" data-filter="true">
+			<li><a href="#webStorageList">Favorite Fruit (Web Storage List)</a></li>
+			<li><a href="#Grid">Grid</a></li>
+			<li><a href="#Cars">Cars <i class="fa fa-car"></i></a></li>
+			<li><a href="#Planes">Planes <i class="fa fa-plane"></i></a></li>
+			<li><a href="#Dogs">Dogs</a></li>
+			<li><a href="#UserForm">Form</a></li>
+		</ul>
+	</div>
+    <a href="#myPanel" class="ui-btn ui-btn-b">Open Panel</a>
+    <div data-role="panel" id="myPanel" data-display="overlay" data-position="right">
+        <p>This is a panel</p>
+    </div>
+
+    <div data-role="footer" data-theme="a">
+        <h4>Footer &copy; 2025 </h4>
+      </div>
+</div>
+
+<div data-role="page" id="webStorageList" data-theme="a" data-add-back-btn="true">
+	<div data-role="header" data-theme="a" data-add-back-btn="true">
+		<h1>Favorite Fruit</h1>
+	</div>
+  <div data-role="content">
+	<ul id="storageList"></ul>
+
+    <script>
+        function storeList() {
+            let fruitList = ["Apples", "Bananas", "Oranges", "Grapes"];
+            localStorage.setItem("fruitList", JSON.stringify(fruitList)); 
+        }
+
+        function displayList() {
+            let storageList = document.getElementById("storageList");
+            storageList.innerHTML = ""; 
+            
+            let storedList = localStorage.getItem("fruitList"); 
+            if (storedList) {
+                let listArray = JSON.parse(storedList); 
+                
+                listArray.forEach(item => {
+                    let listItem = document.createElement("li");
+                    listItem.textContent = item;
+                    storageList.appendChild(listItem);
+                });
+            }
+        }
+
+        if (!localStorage.getItem("fruitList")) {
+            storeList();
+        }
+
+        displayList(); 
+    </script>
+
+  </div>
+	<div data-role="footer" data-theme="a">
+		<h4>Footer &copy; 2025 </h4>
+	</div>
+</div>
+
+<div data-role="page" id="Grid" data-theme="a" data-add-back-btn="true">
+    <div data-role="header" data-theme="a" data-add-back-btn="true">
+      <h1>Grid</h1>
+    </div>
+    <div data-role="content">
+      <div class="ui-grid-c">
+          <div class="ui-block-a" style="background-color: lightblue; padding: 10px;">A</div>
+          <div class="ui-block-b" style="background-color: lightgreen; padding: 10px;">B</div>
+          <div class="ui-block-c" style="background-color: lightcoral; padding: 10px;">C</div>
+          <div class="ui-block-d" style="background-color: lightgray; padding: 10px;">D</div>
+      </div>
+    </div>
+    <div data-role="footer" data-theme="a">
+      <h4>Footer &copy; 2025 </h4>
+    </div>
+  </div>
+
+<div data-role="page" id="Cars"  data-theme="a" data-add-back-btn="true">
+	<div data-role="header" data-theme="a" data-add-back-btn="true">
+	  <h1>Favorite Cars</h1>
+	</div>
+	<div data-role="content">
+	  <h3>Ordered List of Favorite Cars</h3>
+	  <ol>
+		<li>Ferrari 488</li>
+		<li>Lamborghini Huracan</li>
+		<li>Mustang Shelby GT500</li>
+	  </ol>
+	</div>
+	<div data-role="footer" data-theme="a">
+	  <h4>Footer &copy; 2025 </h4>
+	</div>
+</div>
+
+<div id="Planes" data-role="page" data-theme="a" data-add-back-btn="true">
+	<div data-role="header" data-theme="a" data-add-back-btn="true">
+	  <h1>Favorite Planes</h1>
+	</div>
+	<div data-role="content">
+	  <h3>Unordered List of Favorite Planes</h3>
+	  <ul>
+		<li>F-22 Raptor</li>
+		<li>Boeing 747</li>
+		<li>SR-71 Blackbird</li>
+	  </ul>
+	</div>
+	<div data-role="footer" data-theme="a">
+	  <h4>Footer &copy; 2025 </h4>
+	</div>
+</div>
+
+<div id="Dogs" data-role="page" data-theme="a" data-add-back-btn="true">
+	<div data-role="header" data-theme="a" data-add-back-btn="true">
+	  <h1>Favorite Dogs</h1>
+	</div>
+	<div data-role="content">
+	  <h3>Filterable Dog Breeds</h3>
+	  <ul data-role="listview" data-filter="true">
+		<li>Golden Retriever</li>
+		<li>German Shepherd</li>
+		<li>Bulldog</li>
+		<li>Poodle</li>
+		<li>Siberian Husky</li>
+	  </ul>
+	</div>
+	<div data-role="footer" data-theme="a">
+	  <h4>Footer &copy; 2025 </h4>
+	</div>
+</div>
+
+<div id="UserForm" data-role="page" data-theme="a">
+	<div data-role="header" data-theme="a">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left">Back</a>
+	  <h1>User Information Form</h1>
+	</div>
+	<div data-role="content">
+	  <h3>Enter Your Information</h3>
+	  <form>
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="age">Age:</label>
+		<input type="number" id="age" name="age" required>
+
+		<fieldset data-role="controlgroup">
+			<legend>Gender:</legend>
+			<input type="radio" name="gender" id="male" value="Male">
+			<label for="male">Male</label>
+			<input type="radio" name="gender" id="female" value="Female">
+			<label for="female">Female</label>
+		</fieldset>
+
+		<label for="favThing">Favorite Item:</label>
+		<input type="text" id="favThing" name="favThing" required>
+
+		<label for="comments">Comments:</label>
+		<textarea id="comments" name="comments"></textarea>
+
+		<input type="button" value="Save Data" onclick="saveFormData()">
+	  </form>
+	</div>
+	<div data-role="footer" data-theme="a">
+	  <h4>Footer &copy; 2025 </h4>
+	</div>
+</div>
+
+</body>
+</html>
