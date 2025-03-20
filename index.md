@@ -5,7 +5,7 @@ The web application, **My Favorite Things**, allows users to explore, filter, an
 It also provides a form where users can input and save contact info and their favorite item using **local storage**. The app is built using **jQuery Mobile**, making it optimized for mobile devices.
 
 ## Website Structure (Site Map)
-- **Home Page (`index.html`)** - Main navigation hub with links to different sections.
+- **Home Page (`FinalProject.html`)** - Main navigation hub with links to different sections.
 - **Favorite Fruit Page (`webStorageList.html`)** - Displays a list of favorite fruits stored in local storage.
 - **Grid Layout Page (`Grid.html`)** - Demonstrates an example responsive grid layout.
 - **Cars Page (`Cars.html`)** - Lists favorite cars in an ordered list.
