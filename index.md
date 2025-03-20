@@ -33,5 +33,5 @@ It also provides a form where users can input and save contact info and their fa
   - Stored data can be used in future sessions.
 
 ## URLs
-- **Live Page:** http://sotd.us/codyforbes/FinalProject.html
-- **Source Code Repository:** https://github.com/cody-forbes/MobileAppDevelopment
+- **Live Page:** [http://sotd.us/codyforbes/FinalProject.html](http://sotd.us/codyforbes/FinalProject.html)
+- **Source Code Repository:** [https://github.com/cody-forbes/MobileAppDevelopment](https://github.com/cody-forbes/MobileAppDevelopment)
